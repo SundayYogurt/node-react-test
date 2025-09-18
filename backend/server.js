@@ -5,6 +5,7 @@ dotenv.config(); // โหลดค่าตัวแปรจากไฟล์
 const cors = require("cors");
 const PORT = process.env.PORT || 3000; // กำหนด port ที่จะใช้รัน server
 const route = require("./router/route");
+const hiRout = require("./router/route.hi");
 app.use(
   cors({
     origin: ["http://localhost:5173", "127.0.0.1:5173"],
@@ -17,6 +18,7 @@ app.use(express.json()); // Middleware สำหรับแปลง request bo
 app.use(express.urlencoded({ extended: true })); // Middleware สำหรับแปลง urlencoded เป็น json
 
 app.use("/api/hello", route);
+app.use("/api/hi", hiRout);
 
 app.get("/", (req, res) => {
   // route หลัก (root) สำหรับเช็คว่า server ทำงาน
